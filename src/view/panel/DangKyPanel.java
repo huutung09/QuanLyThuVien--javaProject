@@ -11,7 +11,7 @@ public class DangKyPanel extends BasePanel {
         // TODO Auto-generated method stub
         setLayout(null);
         setVisible(true);
-        setBackground(Color.BLUE);
+        setBackground(Color.CYAN);
 
     }
 

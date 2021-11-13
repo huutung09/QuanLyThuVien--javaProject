@@ -1,32 +1,31 @@
 package view.panel;
 
-import java.awt.Color;
-
 import view.ActionClick;
 
-public class DangNhapPanel extends BasePanel {
+import java.awt.*;
 
+public class TraPanel extends BasePanel{
     @Override
     public void initUI() {
-        // TODO Auto-generated method stub
         setLayout(null);
         setVisible(true);
-        setBackground(Color.CYAN);
-
+        setBackground(Color.BLACK);
     }
 
     @Override
     public void addEvent() {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void addComp() {
-        // TODO Auto-generated method stub
 
     }
 
+    @Override
+    protected void handleClick(String name) {
+        super.handleClick(name);
+    }
 
     private ActionClick acc;
 

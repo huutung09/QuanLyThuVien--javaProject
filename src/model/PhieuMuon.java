@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PhieuMuon {
-    private List<Sach> dsMuon;
+    private List<String> dsIdSachMuon;
     private String ngayMuon, phieuId, ngayTra;
     private int late;
     private boolean daTra;
 
     public PhieuMuon(String phieuId, String ngayMuon, String ngayTra) {
-        this.dsMuon = new ArrayList<>();
+        this.dsIdSachMuon = new ArrayList<>();
         this.phieuId = phieuId;
         this.ngayMuon = ngayMuon;
         this.ngayTra = ngayTra;
@@ -49,12 +49,12 @@ public class PhieuMuon {
         this.daTra = daTra;
     }
 
-    public List<Sach> getDsMuon() {
-        return dsMuon;
+    public List<String> getDsMuon() {
+        return dsIdSachMuon;
     }
 
-    public void setDsMuon(List<Sach> dsMuon) {
-        this.dsMuon = dsMuon;
+    public void setDsMuon(List<String> dsMuon) {
+        this.dsIdSachMuon = dsMuon;
     }
 
     public int getLate() {

@@ -1,32 +1,31 @@
 package view.panel;
 
-import java.awt.Color;
-
 import view.ActionClick;
 
-public class DangNhapPanel extends BasePanel {
+import java.awt.*;
 
+public class QuanLySach extends BasePanel{
     @Override
     public void initUI() {
-        // TODO Auto-generated method stub
         setLayout(null);
         setVisible(true);
-        setBackground(Color.CYAN);
-
+        setBackground(Color.BLACK);
     }
 
     @Override
     public void addEvent() {
-        // TODO Auto-generated method stub
 
     }
 
     @Override
     public void addComp() {
-        // TODO Auto-generated method stub
 
     }
 
+    @Override
+    protected void handleClick(String name) {
+        super.handleClick(name);
+    }
 
     private ActionClick acc;
 
@@ -37,5 +36,4 @@ public class DangNhapPanel extends BasePanel {
     public void setAcc(ActionClick acc) {
         this.acc = acc;
     }
-
 }

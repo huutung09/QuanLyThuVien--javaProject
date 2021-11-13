@@ -7,6 +7,8 @@ import java.awt.*;
 public class MainPanel extends BasePanel implements ActionClick {
     private DangKyPanel dangKy;
     private DangNhapPanel dangNhap;
+    private DocGiaPanel docGia;
+    private ThuThuPanel thuThu;
 
     public MainPanel() {
 
@@ -25,13 +27,19 @@ public class MainPanel extends BasePanel implements ActionClick {
 
     @Override
     public void addComp() {
-        dangKy = new DangKyPanel();
-        dangKy.setAcc(this);
-        add(dangKy);
+
         dangNhap = new DangNhapPanel();
         dangNhap.setAcc(this);
         add(dangNhap);
-
+        dangKy = new DangKyPanel();
+        dangKy.setAcc(this);
+        add(dangKy);
+        docGia = new DocGiaPanel();
+        docGia.setAcc(this);
+        add(docGia);
+        thuThu = new ThuThuPanel();
+        thuThu.setAcc(this);
+        add(thuThu);
     }
 
     @Override
@@ -39,7 +47,6 @@ public class MainPanel extends BasePanel implements ActionClick {
         // TODO Auto-generated method stub
         dangKy.setVisible(false);
         dangNhap.setVisible(true);
-
     }
 
     @Override
@@ -47,5 +54,17 @@ public class MainPanel extends BasePanel implements ActionClick {
         // TODO Auto-generated method stub
         dangNhap.setVisible(false);
         dangKy.setVisible(true);
+    }
+
+    @Override
+    public void dangXuatDocGia() {
+        docGia.setVisible(false);
+        dangNhap.setVisible(true);
+    }
+
+    @Override
+    public void dangXuatThuThu() {
+        thuThu.setVisible(false);
+        dangNhap.setVisible(true);
     }
 }
