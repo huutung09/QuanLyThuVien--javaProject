@@ -28,15 +28,19 @@ public class MainPanel extends BasePanel implements ActionClick {
     @Override
     public void addComp() {
 
+        docGia = new DocGiaPanel();
+        docGia.setAcc(this);
+        add(docGia);
+
         dangNhap = new DangNhapPanel();
         dangNhap.setAcc(this);
         add(dangNhap);
         dangKy = new DangKyPanel();
         dangKy.setAcc(this);
         add(dangKy);
-        docGia = new DocGiaPanel();
-        docGia.setAcc(this);
-        add(docGia);
+        // docGia = new DocGiaPanel();
+        // docGia.setAcc(this);
+        // add(docGia);
         thuThu = new ThuThuPanel();
         thuThu.setAcc(this);
         add(thuThu);

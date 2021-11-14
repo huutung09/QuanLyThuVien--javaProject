@@ -4,12 +4,13 @@ import view.ActionClick;
 
 import java.awt.*;
 
-public class QuanLyDocGia extends BasePanel{
+public class QuanLyDocGia extends BasePanel {
+
     @Override
     public void initUI() {
         setLayout(null);
         setVisible(true);
-        setBackground(Color.BLACK);
+        setBackground(Color.cyan);
     }
 
     @Override
