@@ -40,4 +40,22 @@ public class SachManage {
             e.printStackTrace();
         }
     }
+
+    public List<Sach> searchSach(String term) {
+        if (term.equals("")) {
+            return listSach;
+        }
+
+        List<Sach> matching = new ArrayList<>();
+        for (Sach s : listSach) {
+            if (s.getTenSach().toLowerCase().contains(term.toLowerCase())) {
+                matching.add(s);
+            }
+            if (s.getTacGia().equals(term)) {
+                matching.add(s);
+            }
+        }
+
+        return matching;
+    }
 }

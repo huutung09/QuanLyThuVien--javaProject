@@ -3,6 +3,7 @@ package view.panel;
 import view.ActionClick;
 
 import java.awt.*;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -11,12 +12,13 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 
+import model.ModelTable;
 import model.Sach;
 import model.SachManage;
+import model.ModelTable.Listener;
 
-public class TimMuonPanel extends BasePanel {
+public class TimMuonPanel extends BasePanel implements Listener<Sach> {
 
     private static final String BT_TIM_KIEM = "BT_TIM_KIEM";
     private static final String BT_THEM_MUON = "BT_THEM_MUON";
@@ -27,6 +29,7 @@ public class TimMuonPanel extends BasePanel {
     private JButton btTimKiem, btDsMuon, btThemMuon;
     private JTable sachTable;
     private SachManage manage;
+    private ModelTable<Sach> modelTable;
 
     private static final String[] COLUMN_NAME = { "Mã sách", "Tên sách", "Tác giả", "Số lượng" };
 
@@ -46,6 +49,8 @@ public class TimMuonPanel extends BasePanel {
     public void addComp() {
         manage = new SachManage();
         manage.getData();
+        modelTable = new ModelTable<Sach>(manage.getListSach(), COLUMN_NAME);
+        modelTable.setListener(this);
 
         Font f1 = new Font("Tahoma", Font.BOLD, 25);
         Font f2 = new Font("Tahoma", Font.PLAIN, 18);
@@ -66,7 +71,7 @@ public class TimMuonPanel extends BasePanel {
                 BT_TIM_KIEM);
         add(btTimKiem);
 
-        sachTable = new JTable();
+        sachTable = new JTable(modelTable);
         sachTable.setFont(f3);
         sachTable.setRowHeight(50);
         sachTable.getTableHeader().setFont(f2);
@@ -78,7 +83,6 @@ public class TimMuonPanel extends BasePanel {
         tborder.setTitleFont(f2);
         tborder.setTitleColor(Color.BLACK);
         scr.setBorder(tborder);
-        initSachModel(sachTable);
         add(scr);
 
         btThemMuon = createButton("Thêm vào danh sách mượn", 330, scr.getY() + scr.getHeight() + 20, f2, Color.BLACK,
@@ -93,6 +97,7 @@ public class TimMuonPanel extends BasePanel {
     protected void handleClick(String name) {
         switch (name) {
         case BT_TIM_KIEM:
+            timKiem();
             break;
         case BT_THEM_MUON:
             break;
@@ -111,62 +116,29 @@ public class TimMuonPanel extends BasePanel {
         this.acc = acc;
     }
 
-    private void initSachModel(JTable tb) {
-        // TODO Auto-generated method stub
-        DefaultTableModel model = new DefaultTableModel() {
-            @Override
-            public int getColumnCount() {
-                // TODO Auto-generated method stub
-                return COLUMN_NAME.length;
-            }
+    private void timKiem() {
+        String searchTerm = tfTenSach.getText();
+        modelTable = new ModelTable<Sach>(manage.searchSach(searchTerm), COLUMN_NAME);
+        modelTable.setListener(this);
+        sachTable.setModel(modelTable);
 
-            @Override
-            public String getColumnName(int column) {
-                // TODO Auto-generated method stub
-                return COLUMN_NAME[column];
-            }
-
-            @Override
-            public int getRowCount() {
-                // TODO Auto-generated method stub
-                return manage.getListSach().size();
-            }
-
-            @Override
-            public Object getValueAt(int row, int column) {
-                // TODO Auto-generated method stub
-                Sach s = manage.getListSach().get(row);
-                switch (column) {
-                case 0:
-                    return s.getSachId();
-                case 1:
-                    return s.getTenSach();
-                case 2:
-                    return s.getTacGia();
-                case 3:
-                    return s.getSoLuong();
-                default:
-                    return null;
-                }
-            }
-
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false;
-            }
-
-        };
-        tb.setModel(model);
     }
 
-    public void setJTableColumnsWidth(JTable table, int tablePreferredWidth, double... percentages) {
-        double total = 0;
-        for (int i = 0; i < table.getColumnModel().getColumnCount(); i++) {
-            total += percentages[i];
-        }
-        for (int i = 0; i < table.getColumnModel().getColumnCount(); i++) {
-            TableColumn column = table.getColumnModel().getColumn(i);
-            column.setPreferredWidth((int) (tablePreferredWidth * (percentages[i] / total)));
+    @Override
+    public Object getTableValue(int rowIndex, int columnIndex, List<Sach> data) {
+        // TODO Auto-generated method stub
+        Sach s = data.get(rowIndex);
+        switch (columnIndex) {
+        case 0:
+            return s.getSachId();
+        case 1:
+            return s.getTenSach();
+        case 2:
+            return s.getTacGia();
+        case 3:
+            return s.getSoLuong();
+        default:
+            return null;
         }
     }
 
