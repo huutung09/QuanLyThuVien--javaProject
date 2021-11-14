@@ -27,7 +27,9 @@ public class MainPanel extends BasePanel implements ActionClick {
 
     @Override
     public void addComp() {
-
+        thuThu = new ThuThuPanel();
+        thuThu.setAcc(this);
+        add(thuThu);
         dangNhap = new DangNhapPanel();
         dangNhap.setAcc(this);
         add(dangNhap);
@@ -37,9 +39,7 @@ public class MainPanel extends BasePanel implements ActionClick {
         docGia = new DocGiaPanel();
         docGia.setAcc(this);
         add(docGia);
-        thuThu = new ThuThuPanel();
-        thuThu.setAcc(this);
-        add(thuThu);
+
     }
 
     @Override
