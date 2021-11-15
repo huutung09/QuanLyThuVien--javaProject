@@ -15,7 +15,7 @@ public abstract class BasePanel extends JPanel implements ICommon {
         addComp();
     }
 
-    protected JLabel creatLabel(String text, int x, int y, Font f, Color c, Color bg) {
+    protected JLabel createLabel(String text, int x, int y, Font f, Color c, Color bg) {
         JLabel lb = new JLabel();
         lb.setText(text);
         lb.setLocation(x, y);
@@ -35,7 +35,7 @@ public abstract class BasePanel extends JPanel implements ICommon {
         tf.setFont(f);
         tf.setLocation(x, y);
         FontMetrics fm = getFontMetrics(tf.getFont());
-        int hTfA = fm.getHeight();
+        int hTfA = fm.getHeight() + 4;
         tf.setSize(w, hTfA);
         tf.setForeground(c);
         return tf;
@@ -62,7 +62,7 @@ public abstract class BasePanel extends JPanel implements ICommon {
         bt.setLocation(x, y);
         FontMetrics fm = getFontMetrics(bt.getFont());
         int w = fm.stringWidth(bt.getText()) + bt.getInsets().left * 2;
-        int h = fm.getHeight() + getInsets().top * 4;
+        int h = fm.getHeight() + getInsets().top * 4 + 8;
         bt.setSize(w, h);
 
         return bt;
