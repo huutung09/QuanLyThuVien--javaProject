@@ -1,9 +1,10 @@
 package view.panel;
 
 import java.awt.Color;
+
 import view.ActionClick;
 
-public class DangNhapPanel extends BasePanel {
+public class DsMuonPanel extends BasePanel {
 
     @Override
     public void initUI() {

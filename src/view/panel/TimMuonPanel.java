@@ -3,6 +3,7 @@ package view.panel;
 import view.ActionClick;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
@@ -11,7 +12,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.TitledBorder;
-import javax.swing.table.DefaultTableModel;
 
 import model.ModelTable;
 import model.Sach;
@@ -23,13 +23,15 @@ public class TimMuonPanel extends BasePanel implements Listener<Sach> {
     private static final String BT_TIM_KIEM = "BT_TIM_KIEM";
     private static final String BT_THEM_MUON = "BT_THEM_MUON";
     private static final String BT_DS_MUON = "BT_DS_MUON";
+    private static final String BT_DANG_XUAT_DOC_GIA = "BT_DANG_XUAT_DOC_GIA";
 
     private JLabel lbChaoMung, lbTenSach, lbTacGia;
     private JTextField tfTenSach, tfTacGia;
-    private JButton btTimKiem, btDsMuon, btThemMuon;
+    private JButton btTimKiem, btDsMuon, btThemMuon, btDangXuatDocGia;
     private JTable sachTable;
     private SachManage manage;
     private ModelTable<Sach> modelTable;
+    private List<Sach> gioMuon;
 
     private static final String[] COLUMN_NAME = { "Mã sách", "Tên sách", "Tác giả", "Số lượng" };
 
@@ -47,6 +49,7 @@ public class TimMuonPanel extends BasePanel implements Listener<Sach> {
 
     @Override
     public void addComp() {
+        gioMuon = new ArrayList<>();
         manage = new SachManage();
         manage.getData();
         modelTable = new ModelTable<Sach>(manage.getListSach(), COLUMN_NAME);
@@ -55,8 +58,11 @@ public class TimMuonPanel extends BasePanel implements Listener<Sach> {
         Font f1 = new Font("Tahoma", Font.BOLD, 25);
         Font f2 = new Font("Tahoma", Font.PLAIN, 18);
         Font f3 = new Font("Tahoma", Font.PLAIN, 14);
-        lbChaoMung = creatLabel("Chào mừng đến với thư viện", 230, 10, f1, Color.BLACK, Color.cyan);
+        lbChaoMung = creatLabel("Chào mừng đến với thư viện", 220, 10, f1, Color.BLACK, Color.cyan);
         add(lbChaoMung);
+        btDangXuatDocGia = createButton("Đăng xuất", lbChaoMung.getX() + lbChaoMung.getWidth() + 80, lbChaoMung.getY(),
+                f2, Color.BLACK, BT_DANG_XUAT_DOC_GIA);
+        add(btDangXuatDocGia);
         lbTenSach = creatLabel("Tên sách: ", 100, lbChaoMung.getY() + lbChaoMung.getHeight() + 35, f2, Color.black,
                 Color.cyan);
         add(lbTenSach);
@@ -100,8 +106,13 @@ public class TimMuonPanel extends BasePanel implements Listener<Sach> {
             timKiem();
             break;
         case BT_THEM_MUON:
+            themMuon();
             break;
         case BT_DS_MUON:
+            acc.hienDsMuon();
+            break;
+        case BT_DANG_XUAT_DOC_GIA:
+            acc.dangXuatDocGia();
             break;
         }
     }
@@ -122,6 +133,12 @@ public class TimMuonPanel extends BasePanel implements Listener<Sach> {
         modelTable.setListener(this);
         sachTable.setModel(modelTable);
 
+    }
+
+    private void themMuon() {
+        int row = sachTable.getSelectedRow();
+        String value = sachTable.getModel().getValueAt(row, 0).toString();
+        gioMuon.add(manage.searchSachById(value));
     }
 
     @Override

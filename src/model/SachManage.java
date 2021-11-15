@@ -58,4 +58,13 @@ public class SachManage {
 
         return matching;
     }
+
+    public Sach searchSachById(String id) {
+        for (Sach s : listSach) {
+            if (s.getSachId().equals(id)) {
+                return s;
+            }
+        }
+        return null;
+    }
 }

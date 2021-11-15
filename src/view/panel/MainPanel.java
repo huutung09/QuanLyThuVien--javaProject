@@ -9,6 +9,7 @@ public class MainPanel extends BasePanel implements ActionClick {
     private DangNhapPanel dangNhap;
     private DocGiaPanel docGia;
     private ThuThuPanel thuThu;
+    private DsMuonPanel dsMuonPanel;
 
     public MainPanel() {
 
@@ -38,9 +39,10 @@ public class MainPanel extends BasePanel implements ActionClick {
         dangKy = new DangKyPanel();
         dangKy.setAcc(this);
         add(dangKy);
-        // docGia = new DocGiaPanel();
-        // docGia.setAcc(this);
-        // add(docGia);
+
+        dsMuonPanel = new DsMuonPanel();
+        dsMuonPanel.setAcc(this);
+        add(dsMuonPanel);
         thuThu = new ThuThuPanel();
         thuThu.setAcc(this);
         add(thuThu);
@@ -71,4 +73,13 @@ public class MainPanel extends BasePanel implements ActionClick {
         thuThu.setVisible(false);
         dangNhap.setVisible(true);
     }
+
+    @Override
+    public void hienDsMuon() {
+        // TODO Auto-generated method stub
+        // docGia.setVisible(false);
+        dsMuonPanel.setVisible(true);
+
+    }
+
 }
