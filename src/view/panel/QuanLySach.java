@@ -42,7 +42,7 @@ public class QuanLySach extends BasePanel implements MouseListener, ModelTable.L
     }
 
 
-@Override
+    @Override
     public void initUI() {
         setLayout(null);
         setVisible(true);
@@ -166,25 +166,25 @@ public class QuanLySach extends BasePanel implements MouseListener, ModelTable.L
     }
 
     private void timKiem(){
-       for(Sach sach : sachMg.getListSach()){
-           if(sach.getSachId().contains(tf_id.getText()) && !tf_id.getText().equals("")){
-               listTimKiem.add(sach);
-               continue;
-           }
-           if(sach.getTenSach().contains(tf_ten.getText()) && !tf_ten.getText().equals("")){
-               listTimKiem.add(sach);
-               continue;
-           }
-           if(sach.getTacGia().contains(tf_tac_gia.getText()) && ! tf_tac_gia.getText().equals("")){
-               listTimKiem.add(sach);
-           }
-       }
+        for(Sach sach : sachMg.getListSach()){
+            if(sach.getSachId().contains(tf_id.getText()) && !tf_id.getText().equals("")){
+                listTimKiem.add(sach);
+                continue;
+            }
+            if(sach.getTenSach().contains(tf_ten.getText()) && !tf_ten.getText().equals("")){
+                listTimKiem.add(sach);
+                continue;
+            }
+            if(sach.getTacGia().contains(tf_tac_gia.getText()) && ! tf_tac_gia.getText().equals("")){
+                listTimKiem.add(sach);
+            }
+        }
 
     }
 
     private void them() {
         if(!tf_id.getText().equals("") && !tf_ten.getText().equals("")
-            && !tf_tac_gia.getText().equals("") && !tf_so_luong.getText().equals("")
+                && !tf_tac_gia.getText().equals("") && !tf_so_luong.getText().equals("")
         ){
             sachMg.addData(tf_id.getText(), tf_ten.getText(), tf_tac_gia.getText(), Integer.parseInt(tf_so_luong.getText()));
             modelTable.fireTableDataChanged();
@@ -268,7 +268,7 @@ public class QuanLySach extends BasePanel implements MouseListener, ModelTable.L
 
     @Override
     public void mouseClicked(MouseEvent e) {
-       itemTableClick();
+        itemTableClick();
 
     }
 
