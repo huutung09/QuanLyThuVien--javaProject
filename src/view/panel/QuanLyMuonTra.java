@@ -9,7 +9,7 @@ public class QuanLyMuonTra extends BasePanel{
     public void initUI() {
         setLayout(null);
         setVisible(true);
-        setBackground(Color.BLACK);
+        setBackground(Color.CYAN);
     }
 
     @Override

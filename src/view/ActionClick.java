@@ -1,5 +1,7 @@
 package view;
 
+import java.awt.*;
+
 public interface ActionClick {
     void dangKyToDangNhap();
 
@@ -18,4 +20,6 @@ public interface ActionClick {
     void thuThuQuanLyDocGia();
 
     void thuThuQuanLyMuonTra();
+
+    void backToThuThuMenu();
 }

@@ -122,4 +122,11 @@ public class MainPanel extends BasePanel implements ActionClick {
         thuThu.setVisible(false);
         quanLyMuonTra.setVisible(true);
     }
+
+    @Override
+    public void backToThuThuMenu() {
+        quanLyDocGia.setVisible(false);
+        quanLySach.setVisible(false);
+        thuThu.setVisible(true);
+    }
 }

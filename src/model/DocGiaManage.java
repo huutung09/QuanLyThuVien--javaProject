@@ -1,6 +1,9 @@
 package model;
 
+import javax.print.Doc;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,5 +72,39 @@ public class DocGiaManage {
                 listTimKiem.add(docGia);
             }
         }
+    }
+
+    public void updateData(){
+        File file = new File(path);
+        try {
+            FileOutputStream out = new FileOutputStream(file, false);
+            for(DocGia docGia : list){
+                String s = docGia.getDocGiaId() + "-" + docGia.getHoTen() + "-" + docGia.getSdt() + "-" + docGia.getTaiKhoan() +
+                        "-" + docGia.getMatKhau() + "-" + docGia.getGioiTinh() + "-" + docGia.getPhieuMuonId() + "\n";
+                byte[] buff = s.getBytes();
+                out.write(buff);
+            }
+            out.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void addData(String id, String ten, String sdt, String taikhoan, String matKhau, String gioiTinh, String phieuMuonId){
+        File file = new File(path);
+        list.add(new DocGia(id, ten, sdt, taikhoan, matKhau, gioiTinh, phieuMuonId));
+
+        try {
+            FileOutputStream out = new FileOutputStream(file, true);
+            String s = id + "-" + ten + "-" + sdt + "-" + taikhoan +
+                    "-" + matKhau + "-" + gioiTinh + "-" + phieuMuonId + "\n";
+            byte[] buff = s.getBytes();
+            out.write(buff);
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
