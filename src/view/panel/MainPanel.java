@@ -117,10 +117,12 @@ public class MainPanel extends BasePanel implements ActionClick {
     }
 
     @Override
-    public void thuThuQuanLyMuonTra() {
+    public void thuThuQuanLyMuonTra(String id) {
         // TODO Auto-generated method stub
-        thuThu.setVisible(false);
+        quanLyMuonTra.setIdPhieuMuon(id);
+        quanLyDocGia.setVisible(false);
         quanLyMuonTra.setVisible(true);
+
     }
 
     @Override
@@ -128,5 +130,11 @@ public class MainPanel extends BasePanel implements ActionClick {
         quanLyDocGia.setVisible(false);
         quanLySach.setVisible(false);
         thuThu.setVisible(true);
+    }
+
+    @Override
+    public void backToQuanLyDocGia() {
+        quanLyMuonTra.setVisible(false);
+        quanLyDocGia.setVisible(true);
     }
 }

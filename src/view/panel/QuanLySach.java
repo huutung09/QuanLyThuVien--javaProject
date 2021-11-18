@@ -46,7 +46,7 @@ public class QuanLySach extends BasePanel implements MouseListener, ModelTable.L
     public void initUI() {
         setLayout(null);
         setVisible(true);
-        setBackground(Color.CYAN);
+        setBackground(Color.PINK);
     }
 
     @Override
@@ -65,38 +65,58 @@ public class QuanLySach extends BasePanel implements MouseListener, ModelTable.L
         Font f1 = new Font("Tahoma",Font.BOLD,20);
         Font f2 = new Font("Tahoma",Font.PLAIN,25);
         Font f3 = new Font("table_text", Font.PLAIN, 15);
+        Font f4 = new Font("Tahoma", Font.PLAIN, 20);
+        Font f5 = new Font("comboBox_text", Font.PLAIN, 18);
 
         lb_id = createLabel("Mã sách:", 50, 80, f2, Color.BLACK, null);
         add(lb_id);
-        tf_id = createTextField(180, lb_id.getY(), 200, f2, Color.BLACK);
+        tf_id = createTextField(180, lb_id.getY(), 200, f5, Color.BLACK);
         add(tf_id);
+
 
         lb_ten = createLabel("Tên sách:", 50, 150, f2, Color.BLACK, null);
         add(lb_ten);
-        tf_ten = createTextField(180, lb_ten.getY(), 200, f2, Color.BLACK);
+        tf_ten = createTextField(180, lb_ten.getY(), 200, f5, Color.BLACK);
         add(tf_ten);
 
         lb_so_luong = createLabel("Số lượng:", 450, 80, f2, Color.BLACK, null);
         add(lb_so_luong);
-        tf_so_luong = createTextField(630, lb_so_luong.getY(), 200, f2, Color.BLACK);
+        tf_so_luong = createTextField(630, lb_so_luong.getY(), 200, f5, Color.BLACK);
         add(tf_so_luong);
 
         lb_tac_gia = createLabel("Tác giả:", 450, 150, f2, Color.BLACK, null);
         add(lb_tac_gia);
-        tf_tac_gia = createTextField(630, lb_tac_gia.getY(), 200, f2, Color.BLACK);
+        tf_tac_gia = createTextField(630, lb_tac_gia.getY(), 200, f5, Color.BLACK);
         add(tf_tac_gia);
 
-        bt_tim_kiem = createButton("Tìm kiếm", 45, 220, f2, Color.BLACK, BT_TIM_KIEM);
+        bt_tim_kiem = createButton("Tìm kiếm", 45, 220, f1, Color.BLACK, BT_TIM_KIEM);
+        bt_tim_kiem.setSize(140, 40);
+        setImageFromAssertToButton("searchbook.png", bt_tim_kiem, 30, 30);
         add(bt_tim_kiem);
-        bt_them = createButton("Thêm", 255, 220, f2, Color.BLACK, BT_THEM);
+
+        bt_them = createButton("Thêm", 255, 220, f1, Color.BLACK, BT_THEM);
+        bt_them.setSize(100, 40);
+        setImageFromAssertToButton("addbook.png", bt_them, 22, 22);
         add(bt_them);
-        bt_sua = createButton("Sửa", 415, 220, f2, Color.BLACK, BT_SUA);
+
+        bt_sua = createButton("Sửa", 415, 220, f1, Color.BLACK, BT_SUA);
+        bt_sua.setSize(100, 40);
+        setImageFromAssertToButton("edit.png", bt_sua, 22, 22);
         add(bt_sua);
-        bt_xoa = createButton("Xóa", 555, 220, f2, Color.BLACK, BT_XOA);
+
+        bt_xoa = createButton("Xóa", 555, 220, f1, Color.BLACK, BT_XOA);
+        bt_xoa.setSize(100, 40);
+        setImageFromAssertToButton("delete.png", bt_xoa, 22, 22);
         add(bt_xoa);
-        bt_lam_moi = createButton("Làm mới", 705, 220, f2, Color.BLACK, BT_LAM_MOI);
+
+        bt_lam_moi = createButton("Làm mới", 705, 220, f1, Color.BLACK, BT_LAM_MOI);
+        bt_lam_moi.setSize(140, 40);
+        setImageFromAssertToButton("refresh.png", bt_lam_moi, 25, 25);
         add(bt_lam_moi);
-        bt_back = createButton("back", 40, 20, f2, Color.BLACK, BT_BACK);
+
+        bt_back = createButton("", 0, 0, f1, Color.BLACK, BT_BACK);
+        bt_back.setSize(70, 70);
+        setImageFromAssertToButton("return.png", bt_back, 30, 30);
         add(bt_back);
 
         tb_sach = new JTable(modelTable);
@@ -147,9 +167,7 @@ public class QuanLySach extends BasePanel implements MouseListener, ModelTable.L
         }
     }
 
-
     private void updateData(){
-
         File file = new File(path);
         try {
             FileOutputStream out = new FileOutputStream(file, false);

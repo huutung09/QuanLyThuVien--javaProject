@@ -2,6 +2,7 @@ package view.panel;
 
 import view.ICommon;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -68,7 +69,20 @@ public abstract class BasePanel extends JPanel implements ICommon {
         return bt;
     }
 
+    protected void setImageFromAssertToButton(String imageName, JButton button, int width, int height) {
+        try {
+            Image img = ImageIO.read(getClass().getResource("/asserts/" + imageName));
+            button.setIcon(new ImageIcon(img.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH)));
+            button.setBorder(null);
+            button.setBackground(null);
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
+    }
+
     protected void handleClick(String name) {
 
     }
+
+
 }

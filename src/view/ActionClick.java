@@ -19,7 +19,9 @@ public interface ActionClick {
 
     void thuThuQuanLyDocGia();
 
-    void thuThuQuanLyMuonTra();
+    void thuThuQuanLyMuonTra(String id);
 
     void backToThuThuMenu();
+
+    void backToQuanLyDocGia();
 }

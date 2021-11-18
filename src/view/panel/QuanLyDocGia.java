@@ -24,7 +24,7 @@ public class QuanLyDocGia extends BasePanel implements ModelTable.Listener<DocGi
 
     private JTextField tf_id, tf_ten, tf_sdt, tf_tai_khoan, tf_ma_phieu_muon ;
     private JLabel lb_id, lb_ten, lb_sdt, lb_tai_khoan, lb_gioi_tinh, lb_ma_phieu_muon;
-    private JButton bt_sua, bt_tim_kiem, bt_lam_moi, bt_ban, bt_back;
+    private JButton bt_sua, bt_tim_kiem, bt_lam_moi, bt_xem_phieu_muon, bt_back;
     private JTable tb_doc_gia;
     private JRadioButton rb_nam;
     private JRadioButton rb_nu;
@@ -56,7 +56,7 @@ public class QuanLyDocGia extends BasePanel implements ModelTable.Listener<DocGi
         Font f1 = new Font("Tahoma",Font.BOLD,20);
         Font f2 = new Font("Tahoma",Font.PLAIN,25);
         Font f3 = new Font("table_text", Font.PLAIN, 15);
-        Font f4 = new Font("table_text", Font.BOLD, 18);
+        Font f4 = new Font("table_text", Font.BOLD, 16);
         Font f5 = new Font("comboBox_text", Font.PLAIN, 18);
 
         lb_id = createLabel("Mã đọc giả:", 50, 80, f2, Color.BLACK, null);
@@ -101,16 +101,29 @@ public class QuanLyDocGia extends BasePanel implements ModelTable.Listener<DocGi
         tf_ma_phieu_muon = createTextField(630, lb_ma_phieu_muon.getY(), 200, f5, Color.BLACK);
         add(tf_ma_phieu_muon);
 
-        bt_back = createButton("Back", 40, 20, f2, Color.BLACK, BT_BACK);
+        bt_back = createButton("", 0, 0, f2, Color.BLACK, BT_BACK);
+        bt_back.setSize(70, 70);
+        setImageFromAssertToButton("return.png", bt_back, 30, 30);
         add(bt_back);
 
-        bt_tim_kiem = createButton("Tìm kiếm", 45, 290, f2, Color.BLACK, BT_TIM_KIEM);
+        bt_tim_kiem = createButton("Tìm kiếm", 45, 290, f1, Color.BLACK, BT_TIM_KIEM);
+        bt_tim_kiem.setSize(140, 40);
+        setImageFromAssertToButton("searchuser.png", bt_tim_kiem, 30, 30);
         add(bt_tim_kiem);
-        bt_sua = createButton("Sửa", 255, 290, f2, Color.BLACK, BT_SUA);
+
+        bt_sua = createButton("Sửa", 255, 290, f1, Color.BLACK, BT_SUA);
+        bt_sua.setSize(100, 40);
+        setImageFromAssertToButton("edit.png", bt_sua, 22, 22);
         add(bt_sua);
-        bt_ban = createButton("Xem Phiếu Mượn", 405, 290, f2, Color.BLACK, BT_XEM_PHIEU_MUON);
-        add(bt_ban);
-        bt_lam_moi = createButton("Làm mới", 705, 290, f2, Color.BLACK, BT_LAM_MOI);
+
+        bt_xem_phieu_muon = createButton("Xem Phiếu Mượn", 425, 290, f1, Color.BLACK, BT_XEM_PHIEU_MUON);
+        bt_xem_phieu_muon.setSize(220, 40);
+        setImageFromAssertToButton("icondetails.jpg", bt_xem_phieu_muon, 30, 30);
+        add(bt_xem_phieu_muon);
+
+        bt_lam_moi = createButton("Làm mới", 705, 290, f1, Color.BLACK, BT_LAM_MOI);
+        bt_lam_moi.setSize(140, 40);
+        setImageFromAssertToButton("refresh.png", bt_lam_moi, 25, 25);
         add(bt_lam_moi);
 
         tb_doc_gia = new JTable(modelTable);
@@ -147,6 +160,16 @@ public class QuanLyDocGia extends BasePanel implements ModelTable.Listener<DocGi
                 sua();
                 break;
             case BT_XEM_PHIEU_MUON:
+                DocGia docGia;
+                int sr = tb_doc_gia.getSelectedRow();
+                if(docGiaMg.getList().size() != tb_doc_gia.getRowCount()){
+                    docGia = docGiaMg.getListTimKiem().get(sr);
+                }
+                else{
+                    docGia = docGiaMg.getList().get(sr);
+
+                }
+                acc.thuThuQuanLyMuonTra(docGia.getPhieuMuonId());
 
                 break;
             case BT_LAM_MOI:
