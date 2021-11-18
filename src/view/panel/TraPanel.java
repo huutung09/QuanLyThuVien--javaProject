@@ -4,12 +4,12 @@ import view.ActionClick;
 
 import java.awt.*;
 
-public class TraPanel extends BasePanel{
+public class TraPanel extends BasePanel {
     @Override
     public void initUI() {
         setLayout(null);
         setVisible(true);
-        setBackground(Color.BLACK);
+        setBackground(Color.cyan);
     }
 
     @Override

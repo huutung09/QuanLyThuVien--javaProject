@@ -16,31 +16,26 @@ public class ModelTable<T> extends AbstractTableModel {
 
     @Override
     public int getRowCount() {
-        // TODO Auto-generated method stub
         return data.size();
     }
 
     @Override
     public int getColumnCount() {
-        // TODO Auto-generated method stub
         return columnNames.length;
     }
 
     @Override
     public String getColumnName(int column) {
-        // TODO Auto-generated method stub
         return columnNames[column];
     }
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
-        // TODO Auto-generated method stub
         return listener.getTableValue(rowIndex, columnIndex, data);
     }
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
-        // TODO Auto-generated method stub
         return false;
     }
 

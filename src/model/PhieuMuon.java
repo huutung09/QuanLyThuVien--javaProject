@@ -1,20 +1,23 @@
 package model;
 
-import java.util.ArrayList;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class PhieuMuon {
     private List<String> dsIdSachMuon;
     private String ngayMuon, phieuId, ngayTra;
-    private int late;
+    private long late;
     private boolean daTra;
 
-    public PhieuMuon(String phieuId, String ngayMuon, String ngayTra) {
-        this.dsIdSachMuon = new ArrayList<>();
+    public PhieuMuon(String phieuId, List<String> dsIdSachMuon, String ngayMuon, String ngayTra) {
+        this.dsIdSachMuon = dsIdSachMuon;
         this.phieuId = phieuId;
         this.ngayMuon = ngayMuon;
         this.ngayTra = ngayTra;
-        daTra = false;
+        this.late = caculateDay(ngayTra);
+        this.daTra = dsIdSachMuon.isEmpty();
     }
 
     public String getPhieuId() {
@@ -45,10 +48,6 @@ public class PhieuMuon {
         return daTra;
     }
 
-    public void setDaTra(boolean daTra) {
-        this.daTra = daTra;
-    }
-
     public List<String> getDsMuon() {
         return dsIdSachMuon;
     }
@@ -57,12 +56,18 @@ public class PhieuMuon {
         this.dsIdSachMuon = dsMuon;
     }
 
-    public int getLate() {
+    public long getLate() {
         return late;
     }
 
-    public void setLate(int late) {
-        this.late = late;
+    private long caculateDay(String date) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MM yyyy");
+        LocalDate dateCal = LocalDate.parse(date, dtf);
+        long daysBetween = Duration.between(dateCal.atStartOfDay(), LocalDate.now().atStartOfDay()).toDays();
+        if (daysBetween <= 0) {
+            return 0;
+        }
+        return daysBetween;
     }
 
 }

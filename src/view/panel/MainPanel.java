@@ -3,13 +3,21 @@ package view.panel;
 import view.ActionClick;
 
 import java.awt.*;
+import java.util.List;
+
+import model.Sach;
 
 public class MainPanel extends BasePanel implements ActionClick {
     private DangKyPanel dangKy;
     private DangNhapPanel dangNhap;
     private DocGiaPanel docGia;
     private ThuThuPanel thuThu;
-    private DsMuonPanel dsMuonPanel;
+    private TimMuonPanel timMuon;
+    private TraPanel tra;
+    private DsMuonPanel dsMuon;
+    private QuanLyDocGia quanLyDocGia;
+    private QuanLySach quanLySach;
+    private QuanLyMuonTra quanLyMuonTra;
 
     public MainPanel() {
 
@@ -40,24 +48,42 @@ public class MainPanel extends BasePanel implements ActionClick {
         dangKy.setAcc(this);
         add(dangKy);
 
-        dsMuonPanel = new DsMuonPanel();
-        dsMuonPanel.setAcc(this);
-        add(dsMuonPanel);
+        // docGia = new DocGiaPanel();
+        // docGia.setAcc(this);
+        // add(docGia);
+        timMuon = new TimMuonPanel();
+        timMuon.setAcc(this);
+        add(timMuon);
+        tra = new TraPanel();
+        tra.setAcc(this);
+        add(tra);
+        dsMuon = new DsMuonPanel();
+        dsMuon.setAcc(this);
+        add(dsMuon);
+
         thuThu = new ThuThuPanel();
         thuThu.setAcc(this);
         add(thuThu);
+        quanLySach = new QuanLySach();
+        quanLySach.setAcc(this);
+        add(quanLySach);
+        quanLyDocGia = new QuanLyDocGia();
+        quanLyDocGia.setAcc(this);
+        add(quanLyDocGia);
+        quanLyMuonTra = new QuanLyMuonTra();
+        quanLyMuonTra.setAcc(this);
+        add(quanLyMuonTra);
+
     }
 
     @Override
     public void dangKyToDangNhap() {
-        // TODO Auto-generated method stub
         dangKy.setVisible(false);
         dangNhap.setVisible(true);
     }
 
     @Override
     public void dangNhapToDangKy() {
-        // TODO Auto-generated method stub
         dangNhap.setVisible(false);
         dangKy.setVisible(true);
     }
@@ -74,12 +100,61 @@ public class MainPanel extends BasePanel implements ActionClick {
         dangNhap.setVisible(true);
     }
 
-    @Override
-    public void hienDsMuon() {
-        // TODO Auto-generated method stub
-        // docGia.setVisible(false);
-        dsMuonPanel.setVisible(true);
+    public void docGiaTimMuon() {
+        docGia.setVisible(false);
+        timMuon.setVisible(true);
+    }
 
+    @Override
+    public void timMuonDocGia() {
+        timMuon.setVisible(false);
+        docGia.setVisible(true);
+
+    }
+
+    @Override
+    public void hienDsMuon(List<Sach> gMuon) {
+        timMuon.setVisible(false);
+        dsMuon.setVisible(true);
+        dsMuon.setGioMuon(gMuon);
+
+    }
+
+    @Override
+    public void dsMuonComeBack() {
+        dsMuon.setVisible(false);
+        timMuon.setVisible(true);
+
+    }
+
+    @Override
+    public void docGiaTra() {
+        docGia.setVisible(false);
+        tra.setVisible(true);
+    }
+
+    @Override
+    public void traDocGia() {
+        tra.setVisible(false);
+        docGia.setVisible(true);
+    }
+
+    @Override
+    public void thuThuQuanLySach() {
+        thuThu.setVisible(false);
+        quanLySach.setVisible(true);
+    }
+
+    @Override
+    public void thuThuQuanLyDocGia() {
+        thuThu.setVisible(false);
+        quanLyDocGia.setVisible(true);
+    }
+
+    @Override
+    public void thuThuQuanLyMuonTra() {
+        thuThu.setVisible(false);
+        quanLyMuonTra.setVisible(true);
     }
 
 }

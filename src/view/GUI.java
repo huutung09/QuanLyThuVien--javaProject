@@ -20,13 +20,11 @@ public class GUI extends JFrame {
     }
 
     private void addComp() {
-        // TODO Auto-generated method stub
         mainPanel = new MainPanel();
         add(mainPanel);
     }
 
     private void addEvent() {
-        // TODO Auto-generated method stub
         WindowAdapter event = new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -42,7 +40,6 @@ public class GUI extends JFrame {
 
     // initUI hien thi GUI nhu nao
     private void initUI() {
-        // TODO Auto-generated method stub
         setTitle("Quản lý thư viện");
         setSize(W_SIZE, H_SIZE);
         setLocationRelativeTo(null);

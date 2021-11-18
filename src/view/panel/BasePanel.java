@@ -1,22 +1,31 @@
 package view.panel;
 
-import view.ActionClick;
 import view.ICommon;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+
+import model.PhieuMuonManage;
+import model.SachManage;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public abstract class BasePanel extends JPanel implements ICommon {
 
+    protected SachManage sachManage = new SachManage();
+    protected PhieuMuonManage muonManage = new PhieuMuonManage();
+
     public BasePanel() {
         initUI();
         addEvent();
         addComp();
+        sachManage.getData();
+        muonManage.getData();
     }
 
-    protected JLabel creatLabel(String text, int x, int y, Font f, Color c, Color bg) {
+    protected JLabel createLabel(String text, int x, int y, Font f, Color c, Color bg) {
         JLabel lb = new JLabel();
         lb.setText(text);
         lb.setLocation(x, y);
@@ -51,7 +60,6 @@ public abstract class BasePanel extends JPanel implements ICommon {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
                 JComponent comp = (JComponent) e.getSource();
                 String name = comp.getName();
                 handleClick(name);
@@ -67,6 +75,17 @@ public abstract class BasePanel extends JPanel implements ICommon {
         bt.setSize(w, h);
 
         return bt;
+    }
+
+    protected void setImageFromAssertToButton(String imageName, JButton button, int width, int height) {
+        try {
+            Image img = ImageIO.read(getClass().getResource("/asserts/" + imageName));
+            button.setIcon(new ImageIcon(img.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH)));
+            button.setBorder(null);
+            button.setBackground(null);
+        } catch (Exception ex) {
+            System.out.println(ex);
+        }
     }
 
     protected void handleClick(String name) {

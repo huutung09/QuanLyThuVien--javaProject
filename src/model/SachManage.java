@@ -1,6 +1,8 @@
 package model;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +20,7 @@ public class SachManage {
     }
 
     public void getData() {
+        listSach.clear();
         File file = new File(PATH);
         try {
             RandomAccessFile raf = new RandomAccessFile(file, "rw");
@@ -36,7 +39,38 @@ public class SachManage {
                 listSach.add(sach);
             }
         } catch (Exception e) {
-            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
+
+    public void addData(String id, String ten, String tacGia, int soLuong) {
+        File file = new File(PATH);
+        listSach.add(new Sach(id, ten, tacGia, soLuong));
+
+        try {
+            FileOutputStream out = new FileOutputStream(file, true);
+            String s = id + "-" + ten + "-" + tacGia + "-" + soLuong + "\n";
+            byte[] buff = s.getBytes();
+            out.write(buff);
+            out.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void updateData() {
+        File file = new File(PATH);
+        try {
+            FileOutputStream out = new FileOutputStream(file, false);
+            for (Sach sach : listSach) {
+                String s = sach.getSachId() + "-" + sach.getTenSach() + "-" + sach.getTacGia() + "-"
+                        + Integer.toString(sach.getSoLuong()) + "\n";
+                byte[] buff = s.getBytes();
+                out.write(buff);
+            }
+            out.close();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -50,8 +84,7 @@ public class SachManage {
         for (Sach s : listSach) {
             if (s.getTenSach().toLowerCase().contains(term.toLowerCase())) {
                 matching.add(s);
-            }
-            if (s.getTacGia().equals(term)) {
+            } else if (s.getTacGia().toLowerCase().contains(term.toLowerCase())) {
                 matching.add(s);
             }
         }
@@ -67,4 +100,5 @@ public class SachManage {
         }
         return null;
     }
+
 }
