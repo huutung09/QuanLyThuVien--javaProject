@@ -1,7 +1,7 @@
 package view;
 
 public interface ICommon {
-    void initUI();
+     void initUI() ;
     void addEvent();
     void addComp();
 }

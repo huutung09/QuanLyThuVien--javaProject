@@ -4,12 +4,12 @@ import view.ActionClick;
 
 import java.awt.*;
 
-public class TimMuonPanel extends BasePanel {
+public class TimMuonPanel extends BasePanel{
     @Override
     public void initUI() {
         setLayout(null);
         setVisible(true);
-        setBackground(Color.black);
+        setBackground(Color.CYAN);
     }
 
     @Override
@@ -36,5 +36,6 @@ public class TimMuonPanel extends BasePanel {
     public void setAcc(ActionClick acc) {
         this.acc = acc;
     }
+
 
 }

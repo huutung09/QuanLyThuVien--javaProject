@@ -1,23 +1,24 @@
 package view.panel;
 
+import model.DocGia;
+import model.ListDocGia;
 import view.ActionClick;
-
+import java.io.IOException ;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainPanel extends BasePanel implements ActionClick {
     private DangKyPanel dangKy;
     private DangNhapPanel dangNhap;
     private DocGiaPanel docGia;
     private ThuThuPanel thuThu;
-    private TimMuonPanel timMuon;
-    private TraPanel tra;
-    private QuanLyDocGia quanLyDocGia;
-    private QuanLySach quanLySach;
-    private QuanLyMuonTra quanLyMuonTra;
+    private ListDocGia listDocGia ;
 
-    public MainPanel() {
-
+    public MainPanel()  {
+        listDocGia = new ListDocGia();
     }
+
 
     @Override
     public void initUI() {
@@ -32,37 +33,25 @@ public class MainPanel extends BasePanel implements ActionClick {
 
     @Override
     public void addComp() {
-        thuThu = new ThuThuPanel();
-        thuThu.setAcc(this);
-        add(thuThu);
 
         dangNhap = new DangNhapPanel();
         dangNhap.setAcc(this);
         add(dangNhap);
+
+
         dangKy = new DangKyPanel();
         dangKy.setAcc(this);
         add(dangKy);
 
+
+
+
         docGia = new DocGiaPanel();
         docGia.setAcc(this);
         add(docGia);
-        timMuon = new TimMuonPanel();
-        timMuon.setAcc(this);
-        add(timMuon);
-        tra = new TraPanel();
-        tra.setAcc(this);
-        add(tra);
-
-        quanLySach = new QuanLySach();
-        quanLySach.setAcc(this);
-        add(quanLySach);
-        quanLyDocGia = new QuanLyDocGia();
-        quanLyDocGia.setAcc(this);
-        add(quanLyDocGia);
-        quanLyMuonTra = new QuanLyMuonTra();
-        quanLyMuonTra.setAcc(this);
-        add(quanLyMuonTra);
-
+        thuThu = new ThuThuPanel();
+        thuThu.setAcc(this);
+        add(thuThu);
     }
 
     @Override
@@ -91,38 +80,22 @@ public class MainPanel extends BasePanel implements ActionClick {
         dangNhap.setVisible(true);
     }
 
+
+
     @Override
-    public void docGiaTimMuon() {
-        // TODO Auto-generated method stub
-        docGia.setVisible(false);
-        timMuon.setVisible(true);
+    public void addListDocGia(DocGia docGia) {
+        this.listDocGia.addDocGia(docGia);
+        try{
+            listDocGia. ghiDuLieuTuFile();
+        } catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void docGiaTra() {
-        // TODO Auto-generated method stub
-        docGia.setVisible(false);
-        tra.setVisible(true);
+    public List<DocGia> getListDocGia() {
+        return this.listDocGia.getDocgia();
     }
 
-    @Override
-    public void thuThuQuanLySach() {
-        // TODO Auto-generated method stub
-        thuThu.setVisible(false);
-        quanLySach.setVisible(true);
-    }
 
-    @Override
-    public void thuThuQuanLyDocGia() {
-        // TODO Auto-generated method stub
-        thuThu.setVisible(false);
-        quanLyDocGia.setVisible(true);
-    }
-
-    @Override
-    public void thuThuQuanLyMuonTra() {
-        // TODO Auto-generated method stub
-        thuThu.setVisible(false);
-        quanLyMuonTra.setVisible(true);
-    }
 }
