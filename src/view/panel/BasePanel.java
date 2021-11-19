@@ -40,9 +40,9 @@ public abstract class BasePanel extends JPanel implements ICommon {
         return lb;
     }
 
-    protected JTextField createTextField(int x, int y, int w, java.awt.Font f2, Color c) {
+    protected JTextField createTextField(int x, int y, int w, Font f, Color c) {
         JTextField tf = new JTextField();
-        tf.setFont(f2);
+        tf.setFont(f);
         tf.setLocation(x, y);
         FontMetrics fm = getFontMetrics(tf.getFont());
         int hTfA = fm.getHeight() + 4;
@@ -60,6 +60,7 @@ public abstract class BasePanel extends JPanel implements ICommon {
 
             @Override
             public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
                 JComponent comp = (JComponent) e.getSource();
                 String name = comp.getName();
                 handleClick(name);
