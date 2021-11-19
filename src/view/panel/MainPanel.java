@@ -48,9 +48,12 @@ public class MainPanel extends BasePanel implements ActionClick {
         dangKy.setAcc(this);
         add(dangKy);
 
-        // docGia = new DocGiaPanel();
-        // docGia.setAcc(this);
-        // add(docGia);
+        docGia = new DocGiaPanel();
+        docGia.setAcc(this);
+        add(docGia);
+        docGia = new DocGiaPanel();
+        docGia.setAcc(this);
+        add(docGia);
         timMuon = new TimMuonPanel();
         timMuon.setAcc(this);
         add(timMuon);
@@ -152,9 +155,24 @@ public class MainPanel extends BasePanel implements ActionClick {
     }
 
     @Override
-    public void thuThuQuanLyMuonTra() {
-        thuThu.setVisible(false);
+    public void thuThuQuanLyMuonTra(String id) {
+        quanLyMuonTra.setIdPhieuMuon(id);
+        quanLyDocGia.setVisible(false);
         quanLyMuonTra.setVisible(true);
+
+    }
+
+    @Override
+    public void backToThuThuMenu() {
+        quanLyDocGia.setVisible(false);
+        quanLySach.setVisible(false);
+        thuThu.setVisible(true);
+    }
+
+    @Override
+    public void backToQuanLyDocGia() {
+        quanLyMuonTra.setVisible(false);
+        quanLyDocGia.setVisible(true);
     }
 
 }

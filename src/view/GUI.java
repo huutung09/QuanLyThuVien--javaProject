@@ -9,8 +9,8 @@ import java.awt.event.WindowEvent;
 
 public class GUI extends JFrame {
 
-    public static final int H_SIZE = 650;
-    public static final int W_SIZE = 800;
+    public static final int H_SIZE = 800;
+    public static final int W_SIZE = 900;
     private MainPanel mainPanel;
 
     public GUI() {

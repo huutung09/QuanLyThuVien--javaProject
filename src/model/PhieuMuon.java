@@ -60,7 +60,19 @@ public class PhieuMuon {
         return late;
     }
 
-    private long caculateDay(String date) {
+    public void setLate(long late) {
+        this.late = late;
+    }
+
+    public List<String> getDsIdSachMuon() {
+        return dsIdSachMuon;
+    }
+
+    public void setDsIdSachMuon(List<String> dsIdSachMuon) {
+        this.dsIdSachMuon = dsIdSachMuon;
+    }
+
+    public long caculateDay(String date) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd MM yyyy");
         LocalDate dateCal = LocalDate.parse(date, dtf);
         long daysBetween = Duration.between(dateCal.atStartOfDay(), LocalDate.now().atStartOfDay()).toDays();

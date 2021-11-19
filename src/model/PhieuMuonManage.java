@@ -62,4 +62,24 @@ public class PhieuMuonManage {
 
     }
 
+    public void updateData() {
+        File file = new File(PATH);
+        try {
+            FileOutputStream out = new FileOutputStream(file, false);
+            for (PhieuMuon phieuMuon : listPhieuMuon) {
+                String s = phieuMuon.getPhieuId() + "-" + String.join(",", phieuMuon.getDsIdSachMuon()) + "-"
+                        + phieuMuon.getNgayMuon() + "-" + phieuMuon.getNgayTra() + "-" + phieuMuon.getLate() + "\n";
+                byte[] buff = s.getBytes();
+                out.write(buff);
+            }
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public List<PhieuMuon> getListPhieuMuon() {
+        return listPhieuMuon;
+    }
+
 }

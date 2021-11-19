@@ -7,18 +7,17 @@ import java.awt.*;
 
 public class ThuThuPanel extends BasePanel {
 
-    private static final String BT_QUAN_LY_SACH = "BT_QUAN_LY_SACH";
-    private static final String BT_QUAN_LY_DOC_GIA = "BT_QUAN_LY_DOC_GIA";
-    private static final String BT_QUAN_LY_MUON_TRA = "BT_QUAN_LY_MUON_TRA";
-    private static final String BT_DANG_XUAT = "BT_DANG_XUAT";
-    private JButton btQuanLySach, btQuanLyDocGia, btQuanLyMuonTra, btDangXuat;
+    public static final String BT_QUAN_LY_SACH = "BT_QUAN_LY_SACH";
+    public static final String BT_QUAN_LY_DOC_GIA = "BT_QUAN_LY_DOC_GIA";
+    public static final String BT_DANG_XUAT = "BT_DANG_XUAT";
+    private JButton btQuanLySach, btQuanLyDocGia, btDangXuat;
     private JLabel lbChaoMung;
 
     @Override
     public void initUI() {
         setLayout(null);
         setVisible(true);
-        setBackground(Color.CYAN);
+        setBackground(Color.PINK);
     }
 
     @Override
@@ -31,27 +30,25 @@ public class ThuThuPanel extends BasePanel {
         Font f1 = new Font("Tahoma", Font.BOLD, 40);
         Font f2 = new Font("Tahoma", Font.PLAIN, 25);
 
-        lbChaoMung = createLabel("Quản lý thư viện", 240, 80, f1, Color.BLACK, null);
+        lbChaoMung = createLabel("Quản lý thư viện", 280, 80, f1, Color.BLACK, null);
         add(lbChaoMung);
 
-        btQuanLySach = createButton("Quản lý sách", 260, lbChaoMung.getY() + lbChaoMung.getHeight() + 70, f2,
+        btQuanLySach = createButton("Quản lý sách", 297, lbChaoMung.getY() + lbChaoMung.getHeight() + 130, f2,
                 Color.BLACK, BT_QUAN_LY_SACH);
-        btQuanLySach.setSize(300, 50);
+        btQuanLySach.setSize(250, 50);
+        setImageFromAssertToButton("books.png", btQuanLySach, 40, 40);
         add(btQuanLySach);
 
-        btQuanLyDocGia = createButton("Quản lý độc giả", 260, btQuanLySach.getY() + btQuanLySach.getHeight() + 50, f2,
+        btQuanLyDocGia = createButton("Quản lý độc giả", 310, btQuanLySach.getY() + btQuanLySach.getHeight() + 50, f2,
                 Color.BLACK, BT_QUAN_LY_DOC_GIA);
-        btQuanLyDocGia.setSize(300, 50);
+        btQuanLyDocGia.setSize(250, 50);
+        setImageFromAssertToButton("users.png", btQuanLyDocGia, 40, 40);
         add(btQuanLyDocGia);
 
-        btQuanLyMuonTra = createButton("Quản lý mượn trả", 260, btQuanLyDocGia.getY() + btQuanLyDocGia.getHeight() + 50,
-                f2, Color.BLACK, BT_QUAN_LY_MUON_TRA);
-        btQuanLyMuonTra.setSize(300, 50);
-        add(btQuanLyMuonTra);
-
-        btDangXuat = createButton("Đăng xuất", 260, btQuanLyMuonTra.getY() + btQuanLyMuonTra.getHeight() + 50, f2,
+        btDangXuat = createButton("Đăng xuất", 275, btQuanLyDocGia.getY() + btQuanLyDocGia.getHeight() + 50, f2,
                 Color.BLACK, BT_DANG_XUAT);
-        btDangXuat.setSize(300, 50);
+        btDangXuat.setSize(260, 50);
+        setImageFromAssertToButton("logout.png", btDangXuat, 40, 40);
         add(btDangXuat);
     }
 
@@ -63,9 +60,6 @@ public class ThuThuPanel extends BasePanel {
             break;
         case BT_QUAN_LY_DOC_GIA:
             acc.thuThuQuanLyDocGia();
-            break;
-        case BT_QUAN_LY_MUON_TRA:
-            acc.thuThuQuanLyMuonTra();
             break;
         case BT_DANG_XUAT:
             acc.dangXuatThuThu();
