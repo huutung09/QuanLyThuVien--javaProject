@@ -14,6 +14,8 @@ public class DocGia {
         this.phieuMuonId = phieuMuonId;
     }
 
+
+
     public String getDocGiaId() {
         return docGiaId;
     }
@@ -68,6 +70,17 @@ public class DocGia {
 
     public void setPhieuMuonId(String phieuMuonId) {
         this.phieuMuonId = phieuMuonId;
+    }
+        // nam viet them :
+
+    public String getInfos(){
+            return this.getDocGiaId()+"-"+this.getHoTen()+"-"+this.getSdt()+"-"+this.getTaiKhoan()+"-"+this.getMatKhau()+"-" +this.getGioiTinh()+"-"+this.getPhieuMuonId()+"\n";
+    }
+    public boolean kiemTraTKorSDT(String TK,String SDT){
+        if(this.getTaiKhoan().equals(TK)|| this.getSdt().equals(SDT)){
+            return true ;
+        }
+        return false ;
     }
 
 }

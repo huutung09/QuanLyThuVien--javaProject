@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 
 public class GUI extends JFrame {
 
@@ -20,6 +21,7 @@ public class GUI extends JFrame {
     }
 
     private void addComp() {
+        // TODO Auto-generated method stub
         mainPanel = new MainPanel();
         add(mainPanel);
     }

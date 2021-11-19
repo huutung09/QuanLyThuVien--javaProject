@@ -42,7 +42,6 @@ public class TimMuonPanel extends BasePanel implements Listener<Sach> {
         setLayout(null);
         setVisible(true);
         setBackground(Color.CYAN);
-
     }
 
     @Override

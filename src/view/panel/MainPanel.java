@@ -1,7 +1,9 @@
 package view.panel;
 
+import model.DocGia;
+import model.ListDocGia;
 import view.ActionClick;
-
+import java.io.IOException;
 import java.awt.*;
 import java.util.List;
 
@@ -18,9 +20,10 @@ public class MainPanel extends BasePanel implements ActionClick {
     private QuanLyDocGia quanLyDocGia;
     private QuanLySach quanLySach;
     private QuanLyMuonTra quanLyMuonTra;
+    private ListDocGia listDocGia;
 
     public MainPanel() {
-
+        listDocGia = new ListDocGia();
     }
 
     @Override
@@ -40,6 +43,7 @@ public class MainPanel extends BasePanel implements ActionClick {
         dangNhap = new DangNhapPanel();
         dangNhap.setAcc(this);
         add(dangNhap);
+
         dangKy = new DangKyPanel();
         dangKy.setAcc(this);
         add(dangKy);
@@ -166,6 +170,34 @@ public class MainPanel extends BasePanel implements ActionClick {
     public void backToQuanLyDocGia() {
         quanLyMuonTra.setVisible(false);
         quanLyDocGia.setVisible(true);
+    }
+
+    @Override
+    public void addListDocGia(DocGia docGia) {
+        this.listDocGia.addDocGia(docGia);
+        try {
+            listDocGia.ghiDuLieuTuFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public List<DocGia> getListDocGia() {
+        return this.listDocGia.getDocgia();
+    }
+
+    @Override
+    public void dangNhapDocGia() {
+        dangNhap.setVisible(false);
+        docGia.setVisible(true);
+    }
+
+    @Override
+    public void dangnhapThuThu() {
+        dangNhap.setVisible(false);
+        thuThu.setVisible(true);
+
     }
 
 }

@@ -4,14 +4,25 @@ import java.util.List;
 
 import model.Sach;
 
+import model.DocGia;
+
 public interface ActionClick {
+
     void dangKyToDangNhap();
 
     void dangNhapToDangKy();
 
+    void dangNhapDocGia();
+
+    void dangnhapThuThu();
+
     void dangXuatDocGia();
 
     void dangXuatThuThu();
+
+    void addListDocGia(DocGia docGia);
+
+    List<DocGia> getListDocGia();
 
     void hienDsMuon(List<Sach> gMuon);
 

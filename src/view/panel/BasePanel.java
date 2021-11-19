@@ -26,6 +26,7 @@ public abstract class BasePanel extends JPanel implements ICommon {
     }
 
     protected JLabel createLabel(String text, int x, int y, Font f, Color c, Color bg) {
+
         JLabel lb = new JLabel();
         lb.setText(text);
         lb.setLocation(x, y);
@@ -45,10 +46,22 @@ public abstract class BasePanel extends JPanel implements ICommon {
         tf.setFont(f);
         tf.setLocation(x, y);
         FontMetrics fm = getFontMetrics(tf.getFont());
-        int hTfA = fm.getHeight() + 4;
+        int hTfA = fm.getHeight();
         tf.setSize(w, hTfA);
         tf.setForeground(c);
         return tf;
+    }
+
+    protected JPasswordField createPasswordField(int x, int y, int w, Font f, Color c) {
+        JPasswordField tf = new JPasswordField();
+        tf.setFont(f);
+        tf.setLocation(x, y);
+        FontMetrics fm = getFontMetrics(tf.getFont());
+        int hTfA = fm.getHeight();
+        tf.setSize(w, hTfA);
+        tf.setForeground(c);
+        return tf;
+
     }
 
     protected JButton createButton(String text, int x, int y, Font f, Color c, String name) {
@@ -72,7 +85,7 @@ public abstract class BasePanel extends JPanel implements ICommon {
         bt.setLocation(x, y);
         FontMetrics fm = getFontMetrics(bt.getFont());
         int w = fm.stringWidth(bt.getText()) + bt.getInsets().left * 2;
-        int h = fm.getHeight() + getInsets().top * 4 + 8;
+        int h = fm.getHeight() + getInsets().top * 4;
         bt.setSize(w, h);
 
         return bt;
