@@ -1,15 +1,17 @@
 package model;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.RandomAccessFile;
-import java.nio.file.FileSystem;
 import java.util.ArrayList;
 import java.util.List;
+
 public class ListDocGia {
-    private final String PATH= System.getProperty("user.dir")+"\\listDocGia.txt";
-    private List<DocGia> docgia ;
+    private final String PATH = System.getProperty("user.dir") + "\\listDocGia.txt";
+    private List<DocGia> docgia;
+
     public ListDocGia() {
-        docgia=new ArrayList<>();
+        docgia = new ArrayList<>();
 
         try {
             docDuLieuTuFile();
@@ -18,16 +20,17 @@ public class ListDocGia {
             e.printStackTrace();
         }
 
-
-    }
-    public List<DocGia> getDocgia(){
-        return docgia ;
-    }
-    public void setDocgia(List<DocGia> docgia){
-        this.docgia=docgia ;
     }
 
-    public void docDuLieuTuFile()  throws  IOException {
+    public List<DocGia> getDocgia() {
+        return docgia;
+    }
+
+    public void setDocgia(List<DocGia> docgia) {
+        this.docgia = docgia;
+    }
+
+    public void docDuLieuTuFile() throws IOException {
         File file = new File(PATH);
         RandomAccessFile raf = new RandomAccessFile(file, "r");
         String data = "";
@@ -35,22 +38,22 @@ public class ListDocGia {
             String[] infor = data.split("-");
             DocGia docGia = new DocGia(infor[0], infor[1], infor[2], infor[3], infor[4], infor[5], infor[6]);
             docgia.add(docGia);
-            break ;
+            break;
         }
         raf.close();
     }
-    public void ghiDuLieuTuFile() throws IOException{
+
+    public void ghiDuLieuTuFile() throws IOException {
         File file = new File(PATH);
-        RandomAccessFile raf=new RandomAccessFile(file,"rw");
-        for(int i=0; i<getDocgia().size();i++){
+        RandomAccessFile raf = new RandomAccessFile(file, "rw");
+        for (int i = 0; i < getDocgia().size(); i++) {
             raf.writeBytes(getDocgia().get(i).getInfos());
         }
-        raf.close() ;
+        raf.close();
     }
 
-    public void addDocGia(DocGia docGia){
+    public void addDocGia(DocGia docGia) {
         this.docgia.add(docGia);
     }
-
 
 }

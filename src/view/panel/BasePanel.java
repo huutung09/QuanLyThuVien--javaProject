@@ -5,6 +5,7 @@ import view.ICommon;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
+import model.DocGiaManage;
 import model.PhieuMuonManage;
 import model.SachManage;
 
@@ -16,6 +17,7 @@ public abstract class BasePanel extends JPanel implements ICommon {
 
     protected SachManage sachManage = new SachManage();
     protected PhieuMuonManage muonManage = new PhieuMuonManage();
+    protected DocGiaManage docGiaManage = new DocGiaManage();
 
     public BasePanel() {
         initUI();
@@ -23,6 +25,7 @@ public abstract class BasePanel extends JPanel implements ICommon {
         addComp();
         sachManage.getData();
         muonManage.getData();
+        docGiaManage.getData();
     }
 
     protected JLabel createLabel(String text, int x, int y, Font f, Color c, Color bg) {

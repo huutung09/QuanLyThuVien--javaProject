@@ -10,6 +10,7 @@ import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.DocGia;
 import model.ListDocGia;
 import model.TaiKhoan;
 import view.ActionClick;
@@ -30,6 +31,8 @@ public class DangNhapPanel extends BasePanel {
 
     private List<TaiKhoan> listThuThu;
     private List<TaiKhoan> listBanDoc;
+
+    private String docGiaPMId;
 
     @Override
     public void initUI() {
@@ -142,7 +145,7 @@ public class DangNhapPanel extends BasePanel {
                     if (checkValideBanDoc(jtTaiKhoan.getText(), jpMatKhau.getText())) {
                         JOptionPane.showConfirmDialog(null, "Đăng nhập thành công", "thành công",
                                 JOptionPane.CLOSED_OPTION);
-                        acc.dangNhapDocGia();
+                        acc.dangNhapDocGia(getDocGiaPM(jtTaiKhoan.getText(), jpMatKhau.getText()));
                     } else {
                         JOptionPane.showConfirmDialog(null,
                                 "\t\tĐăng nhập bị lỗi\n Vui lòng kiểm tra tài khoản của bạn", "thành công",
@@ -172,6 +175,15 @@ public class DangNhapPanel extends BasePanel {
             }
         }
         return false;
+    }
+
+    private String getDocGiaPM(String tk, String mk) {
+        for (DocGia dg : docGiaManage.getList()) {
+            if (dg.getTaiKhoan().equals(tk) && dg.getMatKhau().equals(mk)) {
+                return dg.getPhieuMuonId();
+            }
+        }
+        return null;
     }
 
     @Override

@@ -9,7 +9,6 @@ public class PhieuMuon {
     private List<String> dsIdSachMuon;
     private String ngayMuon, phieuId, ngayTra;
     private long late;
-    private boolean daTra;
 
     public PhieuMuon(String phieuId, List<String> dsIdSachMuon, String ngayMuon, String ngayTra) {
         this.dsIdSachMuon = dsIdSachMuon;
@@ -17,7 +16,6 @@ public class PhieuMuon {
         this.ngayMuon = ngayMuon;
         this.ngayTra = ngayTra;
         this.late = caculateDay(ngayTra);
-        this.daTra = dsIdSachMuon.isEmpty();
     }
 
     public String getPhieuId() {
@@ -42,10 +40,6 @@ public class PhieuMuon {
 
     public void setNgayTra(String ngayTra) {
         this.ngayTra = ngayTra;
-    }
-
-    public boolean isDaTra() {
-        return daTra;
     }
 
     public List<String> getDsMuon() {

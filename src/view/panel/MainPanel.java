@@ -188,9 +188,10 @@ public class MainPanel extends BasePanel implements ActionClick {
     }
 
     @Override
-    public void dangNhapDocGia() {
+    public void dangNhapDocGia(String PMid) {
         dangNhap.setVisible(false);
         docGia.setVisible(true);
+        docGia.setDocGiaPMId(PMid);
     }
 
     @Override

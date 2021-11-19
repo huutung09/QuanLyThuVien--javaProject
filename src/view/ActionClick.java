@@ -12,7 +12,7 @@ public interface ActionClick {
 
     void dangNhapToDangKy();
 
-    void dangNhapDocGia();
+    void dangNhapDocGia(String PMid);
 
     void dangnhapThuThu();
 

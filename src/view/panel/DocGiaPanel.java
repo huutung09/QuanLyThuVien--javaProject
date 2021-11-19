@@ -7,11 +7,12 @@ import java.awt.*;
 
 public class DocGiaPanel extends BasePanel {
 
-    public static final String BT_TO_TIM_MUON = "BT_TO_TIM_MUON";
-    public static final String BT_TO_TRA = "BT_TO_TRA";
-    public static final String BT_DANG_XUAT = "BT_DANG_XUAT";
+    private static final String BT_TO_TIM_MUON = "BT_TO_TIM_MUON";
+    private static final String BT_TO_TRA = "BT_TO_TRA";
+    private static final String BT_DANG_XUAT = "BT_DANG_XUAT";
     private JButton btToTimMuon, btToTra, btDangXuat;
     private JLabel lbChaoMung;
+    private String docGiaPMId;
 
     @Override
     public void initUI() {
@@ -73,5 +74,9 @@ public class DocGiaPanel extends BasePanel {
 
     public void setAcc(ActionClick acc) {
         this.acc = acc;
+    }
+
+    public void setDocGiaPMId(String docGiaPMId) {
+        this.docGiaPMId = docGiaPMId;
     }
 }
