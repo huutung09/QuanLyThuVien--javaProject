@@ -1,7 +1,8 @@
-S1-Lap trinh java-jvCode-5
-S2-Design pattern-Head first-9
-S3-SQL server-Microsoft-3
-S4-Machine learning-Andrew-7
+S1-Lap trinh java-jvCode-10
+S2-Design pattern-Head first-8
+S3-SQL server-Microsoft-9
+S4-Machine learning-Andreu-20
 S5-Phong tuyet ky ngu sat-Yasuo-1
-S6-Cau truc du lieu va giai thuat-Do Vo Huu Tung-9
-S7-8051-Le Trong Nam-19
+S6-Cau truc du lieu va giai thuat-Do Vo Huu Tung-30
+S7-8051-Le Trong Nam-20
+S8-sfsdf-sadasda-9

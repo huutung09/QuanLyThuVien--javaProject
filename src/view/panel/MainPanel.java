@@ -100,9 +100,11 @@ public class MainPanel extends BasePanel implements ActionClick {
         dangNhap.setVisible(true);
     }
 
-    public void docGiaTimMuon() {
+    @Override
+    public void docGiaTimMuon(String PMid) {
         docGia.setVisible(false);
         timMuon.setVisible(true);
+        timMuon.setDocgiaPM(PMid);
     }
 
     @Override
@@ -113,10 +115,11 @@ public class MainPanel extends BasePanel implements ActionClick {
     }
 
     @Override
-    public void hienDsMuon(List<Sach> gMuon) {
+    public void hienDsMuon(List<Sach> gMuon, String PMid) {
         timMuon.setVisible(false);
         dsMuon.setVisible(true);
         dsMuon.setGioMuon(gMuon);
+        dsMuon.setPMid(PMid);
 
     }
 

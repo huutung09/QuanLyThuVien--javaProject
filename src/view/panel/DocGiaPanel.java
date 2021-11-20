@@ -31,21 +31,21 @@ public class DocGiaPanel extends BasePanel {
         Font f1 = new Font("Tahoma", Font.BOLD, 40);
         Font f2 = new Font("Tahoma", Font.PLAIN, 25);
 
-        lbChaoMung = createLabel("Chào mừng đến với thư viện", 120, 80, f1, Color.BLACK, null);
+        lbChaoMung = createLabel("Chào mừng đến với thư viện", 170, 100, f1, Color.BLACK, null);
         add(lbChaoMung);
 
-        btToTimMuon = createButton("Tìm Kiếm sách", 300, lbChaoMung.getY() + lbChaoMung.getHeight() + 100, f2,
+        btToTimMuon = createButton("Tìm Kiếm sách", 350, lbChaoMung.getY() + lbChaoMung.getHeight() + 150, f2,
                 Color.BLACK, BT_TO_TIM_MUON);
         btToTimMuon.setSize(200, 50);
         add(btToTimMuon);
 
-        btToTra = createButton("Trả sách", 300, btToTimMuon.getY() + btToTimMuon.getHeight() + 50, f2, Color.BLACK,
-                BT_TO_TRA);
+        btToTra = createButton("Trả sách", btToTimMuon.getX(), btToTimMuon.getY() + btToTimMuon.getHeight() + 50, f2,
+                Color.BLACK, BT_TO_TRA);
         btToTra.setSize(200, 50);
         add(btToTra);
 
-        btDangXuat = createButton("Đăng xuất", 300, btToTra.getY() + btToTra.getHeight() + 50, f2, Color.BLACK,
-                BT_DANG_XUAT);
+        btDangXuat = createButton("Đăng xuất", btToTimMuon.getX(), btToTra.getY() + btToTra.getHeight() + 50, f2,
+                Color.BLACK, BT_DANG_XUAT);
         btDangXuat.setSize(200, 50);
         add(btDangXuat);
 
@@ -55,7 +55,7 @@ public class DocGiaPanel extends BasePanel {
     protected void handleClick(String name) {
         switch (name) {
         case BT_TO_TIM_MUON:
-            acc.docGiaTimMuon();
+            acc.docGiaTimMuon(docGiaPMId);
             break;
         case BT_TO_TRA:
             acc.docGiaTra();

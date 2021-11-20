@@ -30,6 +30,8 @@ public class DsMuonPanel extends BasePanel implements Listener<Sach> {
     private List<Sach> gioMuon;
     private ModelTable<Sach> muonTableModel;
 
+    private String PMid;
+
     @Override
     public void initUI() {
         setLayout(null);
@@ -49,11 +51,11 @@ public class DsMuonPanel extends BasePanel implements Listener<Sach> {
         muonTableModel = new ModelTable<Sach>(gioMuon, COLUMN_NAME);
         muonTableModel.setListener(this);
 
-        Font f1 = new Font("Tahoma", Font.BOLD, 25);
+        Font f1 = new Font("Tahoma", Font.BOLD, 30);
         Font f2 = new Font("Tahoma", Font.PLAIN, 18);
         Font f3 = new Font("Tahoma", Font.PLAIN, 14);
 
-        lbDsMuon = createLabel("Danh sách sách đã chọn để mượn", 200, 50, f1, Color.BLACK, null);
+        lbDsMuon = createLabel("Danh sách sách đã chọn để mượn", 280, 50, f1, Color.BLACK, null);
         add(lbDsMuon);
 
         btGoToTimMuon = createButton("", 0, 0, f1, Color.black, BT_GO_TO_TIM_MUON);
@@ -61,15 +63,15 @@ public class DsMuonPanel extends BasePanel implements Listener<Sach> {
         setImageFromAssertToButton("return.png", btGoToTimMuon, 30, 30);
         add(btGoToTimMuon);
 
-        lbNgayMuon = createLabel("Ngày mượn: ", 100, lbDsMuon.getY() + lbDsMuon.getHeight() + 35, f2, Color.black,
+        lbNgayMuon = createLabel("Ngày mượn: ", 200, lbDsMuon.getY() + lbDsMuon.getHeight() + 35, f2, Color.black,
                 null);
         add(lbNgayMuon);
-        tfNgayMuon = createTextField(230, lbNgayMuon.getY(), 450, f2, Color.BLACK);
+        tfNgayMuon = createTextField(300, lbNgayMuon.getY(), 450, f2, Color.BLACK);
         add(tfNgayMuon);
-        lbNgayTra = createLabel("Ngày trả: ", 100, lbNgayMuon.getY() + lbNgayMuon.getHeight() + 20, f2, Color.black,
+        lbNgayTra = createLabel("Ngày trả: ", 200, lbNgayMuon.getY() + lbNgayMuon.getHeight() + 20, f2, Color.black,
                 null);
         add(lbNgayTra);
-        tfNgayTra = createTextField(230, lbNgayTra.getY(), 450, f2, Color.BLACK);
+        tfNgayTra = createTextField(300, lbNgayTra.getY(), 450, f2, Color.BLACK);
         add(tfNgayTra);
 
         muonTable = new JTable(muonTableModel);
@@ -78,7 +80,7 @@ public class DsMuonPanel extends BasePanel implements Listener<Sach> {
         muonTable.getTableHeader().setFont(f3);
         JScrollPane scr = new JScrollPane(muonTable);
         scr.setLocation(0, lbNgayTra.getY() + lbNgayTra.getHeight() + 30);
-        scr.setSize(785, 300);
+        scr.setSize(900, 300);
         scr.setBackground(Color.LIGHT_GRAY);
         TitledBorder tborder = new TitledBorder("DS sách muốn mượn");
         tborder.setTitleFont(f2);
@@ -167,7 +169,7 @@ public class DsMuonPanel extends BasePanel implements Listener<Sach> {
         tfNgayMuon.setText("");
         tfNgayTra.setText("");
         // get phieu id from user
-        muonManage.addData("PM1", gioMuon, strNgayMuon, strNgayTra);
+        muonManage.addData(PMid, gioMuon, strNgayMuon, strNgayTra);
         giamSoLuong();
         gioMuon.clear();
         ((AbstractTableModel) muonTable.getModel()).fireTableDataChanged();
@@ -186,4 +188,7 @@ public class DsMuonPanel extends BasePanel implements Listener<Sach> {
 
     }
 
+    public void setPMid(String pMid) {
+        PMid = pMid;
+    }
 }

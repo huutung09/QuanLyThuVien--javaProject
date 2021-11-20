@@ -35,6 +35,8 @@ public class TimMuonPanel extends BasePanel implements Listener<Sach> {
     private ModelTable<Sach> modelTable;
     private List<Sach> gioMuon;
 
+    private String docgiaPM;
+
     private static final String[] COLUMN_NAME = { "Mã sách", "Tên sách", "Tác giả", "Số lượng" };
 
     @Override
@@ -55,11 +57,11 @@ public class TimMuonPanel extends BasePanel implements Listener<Sach> {
         modelTable = new ModelTable<Sach>(sachManage.getListSach(), COLUMN_NAME);
         modelTable.setListener(this);
 
-        Font f1 = new Font("Tahoma", Font.BOLD, 25);
+        Font f1 = new Font("Tahoma", Font.BOLD, 30);
         Font f2 = new Font("Tahoma", Font.PLAIN, 18);
         Font f3 = new Font("Tahoma", Font.PLAIN, 14);
 
-        lbChaoMung = createLabel("Chào mừng đến với thư viện", 220, 30, f1, Color.BLACK, null);
+        lbChaoMung = createLabel("Chào mừng đến với thư viện", 280, 40, f1, Color.BLACK, null);
         add(lbChaoMung);
 
         btGoToDocGia = createButton("", 0, 0, f1, Color.black, BT_GO_TO_DOC_GIA);
@@ -67,16 +69,16 @@ public class TimMuonPanel extends BasePanel implements Listener<Sach> {
         setImageFromAssertToButton("return.png", btGoToDocGia, 30, 30);
         add(btGoToDocGia);
 
-        lbTenSach = createLabel("Tên sách: ", 100, lbChaoMung.getY() + lbChaoMung.getHeight() + 35, f2, Color.black,
+        lbTenSach = createLabel("Tên sách: ", 200, lbChaoMung.getY() + lbChaoMung.getHeight() + 35, f2, Color.black,
                 null);
         add(lbTenSach);
-        tfTenSach = createTextField(230, lbTenSach.getY(), 450, f2, Color.BLACK);
+        tfTenSach = createTextField(300, lbTenSach.getY(), 450, f2, Color.BLACK);
         add(tfTenSach);
-        lbTacGia = createLabel("Tác giả: ", 100, lbTenSach.getY() + lbTenSach.getHeight() + 20, f2, Color.black, null);
+        lbTacGia = createLabel("Tác giả: ", 200, lbTenSach.getY() + lbTenSach.getHeight() + 20, f2, Color.black, null);
         add(lbTacGia);
-        tfTacGia = createTextField(230, lbTacGia.getY(), 450, f2, Color.BLACK);
+        tfTacGia = createTextField(300, lbTacGia.getY(), 450, f2, Color.BLACK);
         add(tfTacGia);
-        btTimKiem = createButton("Tìm kiếm", 300, tfTacGia.getY() + tfTacGia.getHeight() + 20, f2, Color.BLACK,
+        btTimKiem = createButton("Tìm kiếm", 350, tfTacGia.getY() + tfTacGia.getHeight() + 20, f2, Color.BLACK,
                 BT_TIM_KIEM);
         add(btTimKiem);
 
@@ -89,8 +91,8 @@ public class TimMuonPanel extends BasePanel implements Listener<Sach> {
         sachTable.setRowHeight(50);
         sachTable.getTableHeader().setFont(f2);
         JScrollPane scr = new JScrollPane(sachTable);
-        scr.setLocation(0, btTimKiem.getY() + btTimKiem.getHeight() + 20);
-        scr.setSize(785, 300);
+        scr.setLocation(0, btTimKiem.getY() + btTimKiem.getHeight() + 80);
+        scr.setSize(900, 300);
         scr.setBackground(Color.LIGHT_GRAY);
         TitledBorder tborder = new TitledBorder("DS sách");
         tborder.setTitleFont(f2);
@@ -98,7 +100,7 @@ public class TimMuonPanel extends BasePanel implements Listener<Sach> {
         scr.setBorder(tborder);
         add(scr);
 
-        btThemMuon = createButton("Thêm vào danh sách mượn", 330, scr.getY() + scr.getHeight() + 20, f2, Color.BLACK,
+        btThemMuon = createButton("Thêm vào danh sách mượn", 330, scr.getY() + scr.getHeight() + 100, f2, Color.BLACK,
                 BT_THEM_MUON);
         add(btThemMuon);
         btDsMuon = createButton("Danh sách Mượn", btThemMuon.getWidth() + btThemMuon.getX() + 20, btThemMuon.getY(), f2,
@@ -116,7 +118,7 @@ public class TimMuonPanel extends BasePanel implements Listener<Sach> {
             themMuon();
             break;
         case BT_DS_MUON:
-            acc.hienDsMuon(gioMuon);
+            acc.hienDsMuon(gioMuon, docgiaPM);
             break;
         case BT_GO_TO_DOC_GIA:
             acc.timMuonDocGia();
@@ -192,4 +194,7 @@ public class TimMuonPanel extends BasePanel implements Listener<Sach> {
 
     }
 
+    public void setDocgiaPM(String docgiaPM) {
+        this.docgiaPM = docgiaPM;
+    }
 }

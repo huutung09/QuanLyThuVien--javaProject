@@ -24,11 +24,11 @@ public interface ActionClick {
 
     List<DocGia> getListDocGia();
 
-    void hienDsMuon(List<Sach> gMuon);
+    void hienDsMuon(List<Sach> gMuon, String PMid);
 
     void dsMuonComeBack();
 
-    void docGiaTimMuon();
+    void docGiaTimMuon(String Pmid);
 
     void timMuonDocGia();
 
