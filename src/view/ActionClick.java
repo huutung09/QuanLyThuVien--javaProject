@@ -28,11 +28,11 @@ public interface ActionClick {
 
     void dsMuonComeBack();
 
-    void docGiaTimMuon(String Pmid);
+    void docGiaTimMuon(String PMid);
 
     void timMuonDocGia();
 
-    void docGiaTra();
+    void docGiaTra(String PMid);
 
     void traDocGia();
 

@@ -131,9 +131,10 @@ public class MainPanel extends BasePanel implements ActionClick {
     }
 
     @Override
-    public void docGiaTra() {
+    public void docGiaTra(String PMid) {
         docGia.setVisible(false);
         tra.setVisible(true);
+        tra.setTableModel(PMid);
     }
 
     @Override

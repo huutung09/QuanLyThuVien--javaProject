@@ -58,7 +58,7 @@ public class DocGiaPanel extends BasePanel {
             acc.docGiaTimMuon(docGiaPMId);
             break;
         case BT_TO_TRA:
-            acc.docGiaTra();
+            acc.docGiaTra(docGiaPMId);
             break;
         case BT_DANG_XUAT:
             acc.dangXuatDocGia();
