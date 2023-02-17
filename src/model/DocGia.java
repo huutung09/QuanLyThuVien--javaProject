@@ -86,8 +86,8 @@ public class DocGia {
         return false ;
     }
 
-    public String seminargit() {
-        return phieuMuonId;
-    }
+    // public String seminargit() {
+        // return phieuMuonId;
+    // }
 
 }
