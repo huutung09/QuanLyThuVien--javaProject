@@ -163,14 +163,18 @@ public class QuanLyDocGia extends BasePanel implements ModelTable.Listener<DocGi
         case BT_XEM_PHIEU_MUON:
             DocGia docGia;
             int sr = tb_doc_gia.getSelectedRow();
-            if (docGiaMg.getList().size() != tb_doc_gia.getRowCount()) {
-                docGia = docGiaMg.getListTimKiem().get(sr);
-            } else {
-                docGia = docGiaMg.getList().get(sr);
-
+            if(sr == -1){
+                JOptionPane.showMessageDialog(this, "Hãy chọn đọc giả mà bạn muốn xem phiếu mượn :D");
             }
-            acc.thuThuQuanLyMuonTra(docGia.getPhieuMuonId());
+            else{
+                if (docGiaMg.getList().size() != tb_doc_gia.getRowCount()) {
+                    docGia = docGiaMg.getListTimKiem().get(sr);
+                } else {
+                    docGia = docGiaMg.getList().get(sr);
 
+                }
+                acc.thuThuQuanLyMuonTra(docGia.getPhieuMuonId());
+            }
             break;
         case BT_LAM_MOI:
             lamMoi();
@@ -186,28 +190,34 @@ public class QuanLyDocGia extends BasePanel implements ModelTable.Listener<DocGi
     private void sua() {
         DocGia docGia;
         int sr = tb_doc_gia.getSelectedRow();
-        if (docGiaMg.getList().size() != tb_doc_gia.getRowCount()) {
-            docGia = docGiaMg.getListTimKiem().get(sr);
-        } else {
-            docGia = docGiaMg.getList().get(sr);
 
+        if(sr == -1){
+            JOptionPane.showMessageDialog(this, "Hãy chọn đọc giả mà bạn muốn sửa :D");
         }
-
-        int rs = JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa thông tin của sách " + docGia.getHoTen(),
-                "xac nhan", JOptionPane.YES_NO_OPTION);
-        if (rs == JOptionPane.YES_OPTION) {
-
-            docGia.setDocGiaId(tf_id.getText());
-            docGia.setHoTen(tf_ten.getText());
-            docGia.setSdt(tf_sdt.getText());
-            docGia.setTaiKhoan(tf_tai_khoan.getText());
-            if (rb_nam.isSelected()) {
-                docGia.setGioiTinh("Nam");
+        else{
+            if (docGiaMg.getList().size() != tb_doc_gia.getRowCount()) {
+                docGia = docGiaMg.getListTimKiem().get(sr);
             } else {
-                docGia.setGioiTinh("Nu");
+                docGia = docGiaMg.getList().get(sr);
+
             }
-            modelTable.fireTableDataChanged();
-            docGiaMg.updateData();
+
+            int rs = JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa thông tin của sách " + docGia.getHoTen(),
+                    "xac nhan", JOptionPane.YES_NO_OPTION);
+            if (rs == JOptionPane.YES_OPTION) {
+
+                docGia.setDocGiaId(tf_id.getText());
+                docGia.setHoTen(tf_ten.getText());
+                docGia.setSdt(tf_sdt.getText());
+                docGia.setTaiKhoan(tf_tai_khoan.getText());
+                if (rb_nam.isSelected()) {
+                    docGia.setGioiTinh("Nam");
+                } else {
+                    docGia.setGioiTinh("Nu");
+                }
+                modelTable.fireTableDataChanged();
+                docGiaMg.updateData();
+            }
         }
 
     }

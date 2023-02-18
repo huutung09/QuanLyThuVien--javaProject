@@ -218,24 +218,30 @@ public class QuanLySach extends BasePanel implements MouseListener, ModelTable.L
 
         Sach sach;
         int sr = tb_sach.getSelectedRow();
-        if(sachMg.getListSach().size() != tb_sach.getRowCount()){
-            sach = listTimKiem.get(sr);
+        if(sr == -1){
+            JOptionPane.showMessageDialog(this, "Hãy chọn sách mà bạn muốn sửa :D");
         }
         else{
-            sach = sachMg.getListSach().get(sr);
+            if(sachMg.getListSach().size() != tb_sach.getRowCount()){
+                sach = listTimKiem.get(sr);
+            }
+            else{
+                sach = sachMg.getListSach().get(sr);
+            }
+            int rs = JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa thông tin của sách " + sach.getTenSach() ,"xac nhan",JOptionPane.YES_NO_OPTION);
+            if(rs == JOptionPane.YES_OPTION) {
+
+                sach.setSachId(tf_id.getText());
+                sach.setTenSach(tf_ten.getText());
+                sach.setTacGia(tf_tac_gia.getText());
+                sach.setSoLuong(Integer.parseInt(tf_so_luong.getText()));
+
+                modelTable.fireTableDataChanged();
+                updateData();
+
+            }
         }
-        int rs = JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa thông tin của sách " + sach.getTenSach() ,"xac nhan",JOptionPane.YES_NO_OPTION);
-        if(rs == JOptionPane.YES_OPTION) {
 
-            sach.setSachId(tf_id.getText());
-            sach.setTenSach(tf_ten.getText());
-            sach.setTacGia(tf_tac_gia.getText());
-            sach.setSoLuong(Integer.parseInt(tf_so_luong.getText()));
-
-            modelTable.fireTableDataChanged();
-            updateData();
-
-        }
     }
 
     private void itemTableClick(){
@@ -257,21 +263,28 @@ public class QuanLySach extends BasePanel implements MouseListener, ModelTable.L
     private void xoa() {
         Sach sach;
         int sr = tb_sach.getSelectedRow();
-        if(sachMg.getListSach().size() != tb_sach.getRowCount()){
-            sach = listTimKiem.get(sr);
-            listTimKiem.remove(sach);
-            sachMg.getListSach().remove(sach);
+
+        if(sr == -1){
+            JOptionPane.showMessageDialog(this, "Hãy chọn sách mà bạn muốn xóa :D");
         }
         else{
-            sach = sachMg.getListSach().get(sr);
-        }
-        int rs = JOptionPane.showConfirmDialog(this, "Xóa " + sach.getTenSach() +" ra khỏi danh sách" ,"xac nhan",JOptionPane.YES_NO_OPTION);
-        if(rs == JOptionPane.YES_OPTION) {
+            if(sachMg.getListSach().size() != tb_sach.getRowCount()){
+                sach = listTimKiem.get(sr);
+                listTimKiem.remove(sach);
+                sachMg.getListSach().remove(sach);
+            }
+            else{
+                sach = sachMg.getListSach().get(sr);
+            }
+            int rs = JOptionPane.showConfirmDialog(this, "Xóa " + sach.getTenSach() +" ra khỏi danh sách" ,"xac nhan",JOptionPane.YES_NO_OPTION);
+            if(rs == JOptionPane.YES_OPTION) {
 
-            sachMg.getListSach().remove(sach);
-            modelTable.fireTableDataChanged();
-            updateData();
+                sachMg.getListSach().remove(sach);
+                modelTable.fireTableDataChanged();
+                updateData();
+            }
         }
+
     }
 
     private void lamMoi(){
