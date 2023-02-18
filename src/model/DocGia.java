@@ -68,9 +68,9 @@ public class DocGia {
         return phieuMuonId;
     }
 
-    public void setPhieuMuonId(String phieuMuonId) {
-        this.phieuMuonId = phieuMuonId;
-    }
+    // public void setPhieuMuonId(String phieuMuonId) {
+    //     this.phieuMuonId = phieuMuonId;
+    // }
         // nam viet them :
 
     public String getInfos(){
