@@ -63,9 +63,6 @@ public class DocGia {
     public void setGioiTinh(String gioiTinh) {
         this.gioiTinh = gioiTinh;
     }
-    public void setGioiTinh1(String gioiTinh) {
-        this.gioiTinh = gioiTinh;
-    }
 
     public String getPhieuMuonId() {
         return phieuMuonId;
@@ -84,10 +81,6 @@ public class DocGia {
             return true ;
         }
         return false ;
-    }
-
-    public String seminargit() {
-        return phieuMuonId;
     }
 
 }

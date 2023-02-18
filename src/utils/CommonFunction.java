@@ -8,7 +8,4 @@ public class CommonFunction {
     public static <T> List<T> intersection(List<T> list1, List<T> list2) {
         return list1.stream().filter(list2::contains).collect(Collectors.toList());
     }
-    public static <T> List<T> jjjjjj(List<T> list1, List<T> list2) {
-        return list1.stream().filter(list2::contains).collect(Collectors.toList());
-    }
 }
