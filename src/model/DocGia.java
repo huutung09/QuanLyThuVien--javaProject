@@ -76,7 +76,16 @@ public class DocGia {
     public String getInfos(){
             return this.getDocGiaId()+"-"+this.getHoTen()+"-"+this.getSdt()+"-"+this.getTaiKhoan()+"-"+this.getMatKhau()+"-" +this.getGioiTinh()+"-"+this.getPhieuMuonId()+"\n";
     }
+    public String getInfos(){
+        return this.getDocGiaId()+"-"+this.getHoTen()+"-"+this.getSdt()+"-"+this.getTaiKhoan()+"-"+this.getMatKhau()+"-" +this.getGioiTinh()+"-"+this.getPhieuMuonId()+"\n";
+}
     public boolean kiemTraTKorSDT(String TK,String SDT){
+        if(this.getTaiKhoan().equals(TK)|| this.getSdt().equals(SDT)){
+            return true ;
+        }
+        return false ;
+    }
+    public boolean kiemTraTKorSffDT(String TK,String SDT){
         if(this.getTaiKhoan().equals(TK)|| this.getSdt().equals(SDT)){
             return true ;
         }
